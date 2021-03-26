@@ -21,7 +21,6 @@ export class BaseController implements IController{
             let option:IRouteConfig=new RouteConfig();
             let self=this;
             option.controller=()=>{
-                console.log(this.constructor.name, self.constructor.name);
                 return new this();
             }
             BaseController.__routeConfigs.set(controllerName, option);
