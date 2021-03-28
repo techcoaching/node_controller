@@ -1,4 +1,4 @@
-import { Route, UriPrefix } from "../../common";
+import { HttpPost, Promise, Route, UriPrefix } from "../../common";
 import guidHelper from "../../common/helpers/guidHelper";
 import { BaseController } from "../../common/models/baseController";
 import {Account} from "./account";
@@ -17,5 +17,12 @@ export class AccountController extends BaseController{
     @Route("")
     public getAccounts():Array<Account>{
         return AccountService.accounts;
+    }
+
+    @Route(":id")
+    @HttpPost()
+    public updateAccount(id:string, name:string, status:string):string{
+        let result:string=AccountService.updateAccount(id, name, status);
+        return result;
     }
 }
